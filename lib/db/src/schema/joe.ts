@@ -9,8 +9,10 @@ export const joeModules = pgTable("joe_modules", {
   version: integer("version").default(1).notNull(),
   isActive: boolean("is_active").default(true).notNull(),
   allowedAutoActions: jsonb("allowed_auto_actions").default([]),
+  deletedAt: timestamp("deleted_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  createdBy: uuid("created_by"),
   updatedBy: uuid("updated_by").references(() => users.id),
 });
 
@@ -22,5 +24,9 @@ export const joeLogs = pgTable("joe_logs", {
   actionTaken: text("action_taken"),
   wasAutoAction: boolean("was_auto_action").default(false).notNull(),
   tokensUsed: integer("tokens_used"),
+  deletedAt: timestamp("deleted_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  createdBy: uuid("created_by"),
+  updatedBy: uuid("updated_by"),
 });

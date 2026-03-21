@@ -11,6 +11,9 @@ export const referralRewards = pgTable("referral_rewards", {
   referrerCreditsAwarded: integer("referrer_credits_awarded"),
   referredCreditsAwarded: integer("referred_credits_awarded"),
   status: referralRewardStatusEnum("status").notNull().default("pending"),
+  deletedAt: timestamp("deleted_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  createdBy: uuid("created_by"),
+  updatedBy: uuid("updated_by"),
 });

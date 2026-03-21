@@ -37,7 +37,7 @@ async function seed() {
   if (existingBookingTypes.length === 0) {
     await db.insert(bookingTypes).values([
       {
-        name: "Discovery Session",
+        name: "Discovery",
         durationMinutes: 15,
         priceCents: 0,
         consultantPayoutPercentage: "92.5",
@@ -45,7 +45,7 @@ async function seed() {
         sortOrder: 0,
       },
       {
-        name: "Standard Session",
+        name: "Standard",
         durationMinutes: 30,
         priceCents: 3500,
         consultantPayoutPercentage: "92.5",
@@ -53,7 +53,7 @@ async function seed() {
         sortOrder: 1,
       },
       {
-        name: "Deep Dive Session",
+        name: "Deep Dive",
         durationMinutes: 60,
         priceCents: 6000,
         consultantPayoutPercentage: "92.5",
@@ -61,7 +61,7 @@ async function seed() {
         sortOrder: 2,
       },
     ]);
-    console.log("Booking types created");
+    console.log("Booking types created (3)");
   } else {
     console.log("Booking types already exist, skipping");
   }
@@ -74,14 +74,12 @@ async function seed() {
       { key: "echo_pricing.posting_fee_cents", value: "500", type: "integer", category: "echo_pricing", description: "Consumer request posting fee" },
       { key: "echo_pricing.bid_fee_cents", value: "300", type: "integer", category: "echo_pricing", description: "Per-bid fee for companies" },
       { key: "echo_pricing.completion_fee_cents", value: "4500", type: "integer", category: "echo_pricing", description: "Flat completion fee charged to company" },
-      { key: "echo_pricing.completion_fee_mode", value: "flat", type: "string", category: "echo_pricing", description: "flat or percentage" },
-      { key: "echo_pricing.completion_fee_percentage", value: "0", type: "decimal", category: "echo_pricing", description: "Percentage if mode is percentage" },
+      { key: "echo_pricing.completion_fee_mode", value: "flat", type: "string", category: "echo_pricing", description: "Completion fee mode: flat or percentage" },
       { key: "echo_pricing.max_bids_per_request", value: "25", type: "integer", category: "echo_pricing", description: "Max bids before request closes" },
       { key: "echo_pricing.no_bid_refund_days", value: "3", type: "integer", category: "echo_pricing", description: "Days before no-bid refund" },
       { key: "echo_pricing.receipt_upload_expiry_days", value: "60", type: "integer", category: "echo_pricing", description: "Days to upload receipt after award" },
       { key: "echo_pricing.default_consumer_reward_credits", value: "50", type: "integer", category: "echo_pricing", description: "Default flat credit reward to consumer" },
-      { key: "echo_pricing.first_bid_waive_claim_fee", value: "true", type: "boolean", category: "echo_pricing", description: "Waive claim fee on first bid" },
-      { key: "echo_pricing.first_bid_waive_bid_fee", value: "true", type: "boolean", category: "echo_pricing", description: "Waive bid fee on first bid" },
+      { key: "echo_pricing.first_bid_waive_fees", value: "true", type: "boolean", category: "echo_pricing", description: "Waive claim and bid fees on first bid" },
       { key: "booking.discovery_price_cents", value: "0", type: "integer", category: "booking", description: "Free discovery session" },
       { key: "booking.standard_price_cents", value: "3500", type: "integer", category: "booking", description: "30-min session price" },
       { key: "booking.deep_dive_price_cents", value: "6000", type: "integer", category: "booking", description: "60-min session price" },
@@ -94,7 +92,7 @@ async function seed() {
       { key: "referral.referred_reward_credits", value: "5", type: "integer", category: "referral", description: "Welcome bonus for referred user" },
       { key: "oe.min_platform_fee_percentage", value: "3.5", type: "decimal", category: "owner_exchange", description: "Minimum platform fee for OE sales" },
     ]);
-    console.log("System settings created");
+    console.log("System settings created (22)");
   } else {
     console.log("System settings already exist, skipping");
   }

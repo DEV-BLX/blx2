@@ -17,6 +17,8 @@ export const communities = pgTable("communities", {
   deletedAt: timestamp("deleted_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  createdBy: uuid("created_by"),
+  updatedBy: uuid("updated_by"),
 });
 
 export const companyCommunities = pgTable("company_communities", {
@@ -26,10 +28,20 @@ export const companyCommunities = pgTable("company_communities", {
   isPrimary: boolean("is_primary").default(false).notNull(),
   paid: boolean("paid").default(false).notNull(),
   paymentId: text("payment_id"),
+  deletedAt: timestamp("deleted_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  createdBy: uuid("created_by"),
+  updatedBy: uuid("updated_by"),
 });
 
 export const consultantCommunities = pgTable("consultant_communities", {
+  id: uuid("id").defaultRandom().primaryKey(),
   consultantId: uuid("consultant_id").references(() => consultants.id).notNull(),
   communityId: uuid("community_id").references(() => communities.id).notNull(),
+  deletedAt: timestamp("deleted_at"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  createdBy: uuid("created_by"),
+  updatedBy: uuid("updated_by"),
 });

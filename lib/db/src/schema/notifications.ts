@@ -13,5 +13,9 @@ export const notifications = pgTable("notifications", {
   archived: boolean("archived").default(false).notNull(),
   channel: notificationChannelEnum("channel").notNull().default("in_app"),
   sentAt: timestamp("sent_at"),
+  deletedAt: timestamp("deleted_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  createdBy: uuid("created_by"),
+  updatedBy: uuid("updated_by"),
 });

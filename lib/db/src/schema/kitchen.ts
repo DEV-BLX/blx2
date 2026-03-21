@@ -15,8 +15,11 @@ export const kitchenItems = pgTable("kitchen_items", {
   externalUrl: text("external_url"),
   status: kitchenItemStatusEnum("status").notNull().default("active"),
   sortOrder: integer("sort_order").default(0).notNull(),
+  deletedAt: timestamp("deleted_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  createdBy: uuid("created_by"),
+  updatedBy: uuid("updated_by"),
 });
 
 export const kitchenPurchases = pgTable("kitchen_purchases", {
@@ -28,6 +31,9 @@ export const kitchenPurchases = pgTable("kitchen_purchases", {
   status: kitchenPurchaseStatusEnum("status").notNull().default("active"),
   purchasedAt: timestamp("purchased_at").notNull(),
   expiresAt: timestamp("expires_at"),
+  deletedAt: timestamp("deleted_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  createdBy: uuid("created_by"),
+  updatedBy: uuid("updated_by"),
 });

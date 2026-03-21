@@ -11,5 +11,9 @@ export const auditLogs = pgTable("audit_logs", {
   newValue: jsonb("new_value"),
   ipAddress: text("ip_address"),
   metadata: jsonb("metadata"),
+  deletedAt: timestamp("deleted_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  createdBy: uuid("created_by"),
+  updatedBy: uuid("updated_by"),
 });

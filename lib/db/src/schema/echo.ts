@@ -39,11 +39,19 @@ export const echoRequests = pgTable("echo_requests", {
   deletedAt: timestamp("deleted_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  createdBy: uuid("created_by"),
+  updatedBy: uuid("updated_by"),
 });
 
 export const echoRequestCommunities = pgTable("echo_request_communities", {
+  id: uuid("id").defaultRandom().primaryKey(),
   echoRequestId: uuid("echo_request_id").references(() => echoRequests.id).notNull(),
   communityId: uuid("community_id").references(() => communities.id).notNull(),
+  deletedAt: timestamp("deleted_at"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  createdBy: uuid("created_by"),
+  updatedBy: uuid("updated_by"),
 });
 
 export const echoBids = pgTable("echo_bids", {
@@ -78,6 +86,8 @@ export const echoBids = pgTable("echo_bids", {
   deletedAt: timestamp("deleted_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  createdBy: uuid("created_by"),
+  updatedBy: uuid("updated_by"),
 });
 
 export const echoMessages = pgTable("echo_messages", {
@@ -86,5 +96,9 @@ export const echoMessages = pgTable("echo_messages", {
   senderType: echoSenderTypeEnum("sender_type").notNull(),
   senderUserId: uuid("sender_user_id").references(() => users.id).notNull(),
   message: text("message").notNull(),
+  deletedAt: timestamp("deleted_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  createdBy: uuid("created_by"),
+  updatedBy: uuid("updated_by"),
 });

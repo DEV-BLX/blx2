@@ -12,8 +12,11 @@ export const bookingTypes = pgTable("booking_types", {
   isFree: boolean("is_free").default(false).notNull(),
   status: bookingTypeStatusEnum("status").notNull().default("active"),
   sortOrder: integer("sort_order").default(0).notNull(),
+  deletedAt: timestamp("deleted_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  createdBy: uuid("created_by"),
+  updatedBy: uuid("updated_by"),
 });
 
 export const bookings = pgTable("bookings", {
@@ -34,6 +37,8 @@ export const bookings = pgTable("bookings", {
   deletedAt: timestamp("deleted_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  createdBy: uuid("created_by"),
+  updatedBy: uuid("updated_by"),
 });
 
 export const consultantPayouts = pgTable("consultant_payouts", {
@@ -44,6 +49,9 @@ export const consultantPayouts = pgTable("consultant_payouts", {
   status: payoutStatusEnum("status").notNull().default("unpaid"),
   stripeTransferId: text("stripe_transfer_id"),
   paidAt: timestamp("paid_at"),
+  deletedAt: timestamp("deleted_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  createdBy: uuid("created_by"),
+  updatedBy: uuid("updated_by"),
 });

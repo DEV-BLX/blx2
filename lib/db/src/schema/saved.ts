@@ -8,8 +8,11 @@ export const savedFolders = pgTable("saved_folders", {
   id: uuid("id").defaultRandom().primaryKey(),
   userId: uuid("user_id").references(() => users.id).notNull(),
   name: text("name").notNull(),
+  deletedAt: timestamp("deleted_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  createdBy: uuid("created_by"),
+  updatedBy: uuid("updated_by"),
 });
 
 export const savedItems = pgTable("saved_items", {
@@ -22,6 +25,9 @@ export const savedItems = pgTable("saved_items", {
   externalLabel: text("external_label"),
   notes: text("notes"),
   folderId: uuid("folder_id").references(() => savedFolders.id),
+  deletedAt: timestamp("deleted_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  createdBy: uuid("created_by"),
+  updatedBy: uuid("updated_by"),
 });

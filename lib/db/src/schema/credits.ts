@@ -22,7 +22,11 @@ export const creditTransactions = pgTable("credit_transactions", {
   description: text("description"),
   status: creditTransactionStatusEnum("status").notNull().default("completed"),
   expiresAt: timestamp("expires_at"),
+  deletedAt: timestamp("deleted_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  createdBy: uuid("created_by"),
+  updatedBy: uuid("updated_by"),
 });
 
 export const creditOffers = pgTable("credit_offers", {
@@ -39,8 +43,11 @@ export const creditOffers = pgTable("credit_offers", {
   remainingFunded: integer("remaining_funded").notNull(),
   status: creditOfferStatusEnum("status").notNull().default("active"),
   adminApproved: boolean("admin_approved").default(false).notNull(),
+  deletedAt: timestamp("deleted_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  createdBy: uuid("created_by"),
+  updatedBy: uuid("updated_by"),
 });
 
 export const creditOfferCompletions = pgTable("credit_offer_completions", {
@@ -56,6 +63,9 @@ export const creditOfferCompletions = pgTable("credit_offer_completions", {
   reviewedBy: uuid("reviewed_by").references(() => users.id),
   reviewedAt: timestamp("reviewed_at"),
   creditsAwarded: integer("credits_awarded"),
+  deletedAt: timestamp("deleted_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  createdBy: uuid("created_by"),
+  updatedBy: uuid("updated_by"),
 });

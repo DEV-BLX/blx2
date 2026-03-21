@@ -51,6 +51,12 @@ export const posts = pgTable("posts", {
 });
 
 export const postTags = pgTable("post_tags", {
+  id: uuid("id").defaultRandom().primaryKey(),
   postId: uuid("post_id").references(() => posts.id).notNull(),
   tagId: uuid("tag_id").references(() => tags.id).notNull(),
+  deletedAt: timestamp("deleted_at"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  createdBy: uuid("created_by"),
+  updatedBy: uuid("updated_by"),
 });
