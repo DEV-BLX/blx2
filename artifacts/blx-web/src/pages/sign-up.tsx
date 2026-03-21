@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { useAuth } from "@/lib/auth";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 export default function SignUp() {
@@ -35,21 +33,25 @@ export default function SignUp() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-3.5rem)] flex items-center justify-center px-4 py-12">
-      <Card className="w-full max-w-md">
-        <CardHeader className="text-center">
-          <CardTitle className="text-2xl font-bold text-navy">Create Account</CardTitle>
-          <CardDescription>Join Blue Label Exchange</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="min-h-[calc(100vh-4rem)] neu-page-bg flex items-center justify-center px-4 py-16">
+      <div className="w-full max-w-md">
+        <div className="text-center mb-8">
+          <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-gold to-[#d4b55c] shadow-lg shadow-gold/20 mb-4">
+            <span className="text-navy font-black text-sm">BLX</span>
+          </div>
+          <h1 className="text-2xl font-bold text-charcoal">Create Account</h1>
+          <p className="text-coffee-brown/60 text-sm mt-1 font-light">Join Blue Label Exchange</p>
+        </div>
+
+        <div className="neu-card rounded-3xl p-8">
+          <form onSubmit={handleSubmit} className="space-y-5">
             {error && (
-              <div className="p-3 rounded-md bg-destructive/10 text-destructive text-sm">
+              <div className="p-3.5 rounded-xl bg-terracotta-red/10 text-terracotta-red text-sm font-medium border border-terracotta-red/20">
                 {error}
               </div>
             )}
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email" className="text-sm font-medium text-charcoal/80">Email</Label>
               <Input
                 id="email"
                 type="email"
@@ -57,10 +59,11 @@ export default function SignUp() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                className="h-11 rounded-xl bg-[#eef0f5] border-0 shadow-inner shadow-black/5 focus:ring-2 focus:ring-navy/20 transition-all"
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password" className="text-sm font-medium text-charcoal/80">Password</Label>
               <Input
                 id="password"
                 type="password"
@@ -69,15 +72,16 @@ export default function SignUp() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 minLength={8}
+                className="h-11 rounded-xl bg-[#eef0f5] border-0 shadow-inner shadow-black/5 focus:ring-2 focus:ring-navy/20 transition-all"
               />
             </div>
             <div className="space-y-2">
-              <Label>Account Type</Label>
+              <Label className="text-sm font-medium text-charcoal/80">Account Type</Label>
               <Select value={role} onValueChange={setRole}>
-                <SelectTrigger>
+                <SelectTrigger className="h-11 rounded-xl bg-[#eef0f5] border-0 shadow-inner shadow-black/5 focus:ring-2 focus:ring-navy/20">
                   <SelectValue placeholder="Select your account type" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="rounded-xl">
                   <SelectItem value="company">Business / Company</SelectItem>
                   <SelectItem value="consumer">Consumer</SelectItem>
                   <SelectItem value="consultant">Consultant</SelectItem>
@@ -85,27 +89,34 @@ export default function SignUp() {
               </Select>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="referral">Referral Code (optional)</Label>
+              <Label htmlFor="referral" className="text-sm font-medium text-charcoal/80">
+                Referral Code <span className="text-coffee-brown/40 font-normal">(optional)</span>
+              </Label>
               <Input
                 id="referral"
                 type="text"
                 placeholder="e.g. BLX-J4K7M"
                 value={referralCode}
                 onChange={(e) => setReferralCode(e.target.value)}
+                className="h-11 rounded-xl bg-[#eef0f5] border-0 shadow-inner shadow-black/5 focus:ring-2 focus:ring-navy/20 transition-all"
               />
             </div>
-            <Button type="submit" className="w-full bg-navy hover:bg-navy/90" disabled={loading}>
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full h-12 rounded-2xl text-sm font-semibold bg-gradient-to-r from-navy to-[#2d5490] text-white shadow-lg shadow-navy/25 hover:shadow-xl hover:shadow-navy/30 hover:-translate-y-px transition-all duration-300 disabled:opacity-60 disabled:pointer-events-none"
+            >
               {loading ? "Creating account..." : "Create Account"}
-            </Button>
-            <p className="text-center text-sm text-muted-foreground">
+            </button>
+            <p className="text-center text-sm text-coffee-brown/50 pt-2">
               Already have an account?{" "}
               <Link href="/sign-in" className="text-navy font-medium hover:underline">
                 Sign In
               </Link>
             </p>
           </form>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }
