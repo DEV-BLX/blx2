@@ -1,0 +1,41 @@
+import { pgTable, uuid, text, boolean, integer, timestamp } from "drizzle-orm/pg-core";
+import { users } from "./users";
+import { categories } from "./categories";
+import { companyStatusEnum, importStatusEnum } from "./enums";
+
+export const companies = pgTable("companies", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  userId: uuid("user_id").references(() => users.id),
+  name: text("name").notNull(),
+  description: text("description"),
+  website: text("website"),
+  phone: text("phone"),
+  email: text("email"),
+  imageUrl: text("image_url"),
+  city: text("city"),
+  state: text("state"),
+  isClaimed: boolean("is_claimed").default(false).notNull(),
+  claimPaid: boolean("claim_paid").default(false).notNull(),
+  identityVerified: boolean("identity_verified").default(false).notNull(),
+  isLocallyOwned: boolean("is_locally_owned"),
+  ownershipType: text("ownership_type"),
+  numLocations: integer("num_locations"),
+  categoryId: uuid("category_id").references(() => categories.id),
+  echoPricingEnabled: boolean("echo_pricing_enabled").default(false).notNull(),
+  echoPricingPaused: boolean("echo_pricing_paused").default(false).notNull(),
+  stripeCustomerId: text("stripe_customer_id"),
+  stripeConnectAccountId: text("stripe_connect_account_id"),
+  importBatchTag: text("import_batch_tag"),
+  importStatus: importStatusEnum("import_status"),
+  fitScore: integer("fit_score"),
+  intentScore: integer("intent_score"),
+  urgencyFlag: text("urgency_flag"),
+  companyTypeLabel: text("company_type_label"),
+  verificationBadgeVisible: boolean("verification_badge_visible").default(false).notNull(),
+  status: companyStatusEnum("status").notNull().default("draft"),
+  deletedAt: timestamp("deleted_at"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  createdBy: uuid("created_by"),
+  updatedBy: uuid("updated_by"),
+});
