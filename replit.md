@@ -92,12 +92,37 @@ All monetary amounts stored in cents (integer). Soft deletes via `deleted_at` co
 | Prefix | Purpose | Auth |
 |--------|---------|------|
 | /api/auth/* | Authentication | Public |
+| /api/companies | Company listing (paginated, filterable) | Public |
+| /api/companies/:id | Company card (public view) | Public |
+| /api/companies/:id/claim | Claim a company | Company role |
+| /api/company/profile | Company profile CRUD | Company role |
+| /api/company/profile/categories | Update company categories | Company role |
+| /api/company/communities | Company communities CRUD | Company role |
+| /api/company/dashboard | Company dashboard data | Company role |
+| /api/communities/search | Search counties | Public |
+| /api/categories | List categories | Public |
+| /api/webhooks/stripe | Stripe webhook (raw body) | Stripe signature |
 | /api/admin/* | Admin panel | Admin roles |
+
+## Stripe Integration
+
+- Package: `stripe` in api-server
+- Lazy-initialized via Proxy (no crash if env vars missing)
+- Env vars: `STRIPE_SECRET_KEY`, `STRIPE_PUBLISHABLE_KEY`, `STRIPE_WEBHOOK_SECRET`, `VITE_STRIPE_PUBLISHABLE_KEY`
+- Webhook route registered before `express.json()` for raw body parsing
+- Payment types: company_claim (from system_settings), community_add (from system_settings)
+- First company claim is free; additional claims cost `company.claim_fee_cents` (default $5)
+- First community is free; additional communities cost `company.community_add_fee_cents` (default $2)
+- All fees read from `system_settings` table, never hardcoded
 
 ## Frontend Pages
 
 - Home, Sign In, Sign Up — fully implemented
-- All role-specific pages — placeholder "Coming Soon" stubs
+- **Companies** (`/companies`) — browseable company listing with search, category filter, community filter
+- **Company Card** (`/company/:id`) — public company page showing name, description, categories, communities, claim button
+- **Company Edit** (`/company/edit`) — company profile editor with categories and community management
+- **Dashboard** (`/dashboard`) — company dashboard with stats, quick actions, communities, recent activity
+- Remaining role-specific pages — placeholder "Coming Soon" stubs
 - Navigation changes based on user role (visitor, company, consumer, consultant, admin)
 - Mobile hamburger menu via shadcn Sheet component
 
@@ -130,14 +155,15 @@ Run: `pnpm --filter @workspace/scripts run seed`
 
 Run: `pnpm --filter @workspace/scripts run seed-counties`
 - Seeds ~3,235 US counties into `communities` table from Census Bureau FIPS data
-- Includes all 50 states + DC + territories (PR, GU, VI, AS, MP)
-- Data file: `scripts/data/national_county2020.txt`
-- Each row: name, state, display_name, fips_code, is_county=true, is_custom=false, approximate lat/lon
+
+Run: `pnpm --filter @workspace/scripts run seed-companies`
+- 20 company categories (taxonomy=company): Restaurant, HVAC, Landscaping, Auto, Cleaning, etc.
+- 10 sample unclaimed companies in Montgomery County, TX and Harris County, TX
+- Each company linked to one category and one community
 
 ## Placeholder Services
 
 Stub files exist for future integrations:
-- `artifacts/api-server/src/lib/stripe/index.ts`
 - `artifacts/api-server/src/lib/email/index.ts`
 - `artifacts/api-server/src/lib/sms/index.ts`
 

@@ -6,14 +6,18 @@ import { companyStatusEnum, importStatusEnum } from "./enums";
 export const companies = pgTable("companies", {
   id: uuid("id").defaultRandom().primaryKey(),
   userId: uuid("user_id").references(() => users.id),
+  claimedByUserId: uuid("claimed_by_user_id").references(() => users.id),
+  claimedAt: timestamp("claimed_at"),
   name: text("name").notNull(),
   description: text("description"),
   website: text("website"),
   phone: text("phone"),
   email: text("email"),
   imageUrl: text("image_url"),
+  street: text("street"),
   city: text("city"),
   state: text("state"),
+  zip: text("zip"),
   isClaimed: boolean("is_claimed").default(false).notNull(),
   claimPaid: boolean("claim_paid").default(false).notNull(),
   identityVerified: boolean("identity_verified").default(false).notNull(),
@@ -38,4 +42,11 @@ export const companies = pgTable("companies", {
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
   createdBy: uuid("created_by"),
   updatedBy: uuid("updated_by"),
+});
+
+export const companyCategories = pgTable("company_categories", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  companyId: uuid("company_id").references(() => companies.id).notNull(),
+  categoryId: uuid("category_id").references(() => categories.id).notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
 });

@@ -23,6 +23,7 @@ export const companyStatusEnum = pgEnum("company_status", [
   "inactive",
   "suspended",
   "draft",
+  "unclaimed",
 ]);
 
 export const importStatusEnum = pgEnum("import_status", [

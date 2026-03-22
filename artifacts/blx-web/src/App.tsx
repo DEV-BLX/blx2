@@ -8,6 +8,10 @@ import { Header } from "@/components/layout/header";
 import Home from "@/pages/home";
 import SignIn from "@/pages/sign-in";
 import SignUp from "@/pages/sign-up";
+import Companies from "@/pages/companies";
+import CompanyCard from "@/pages/company-card";
+import CompanyEdit from "@/pages/company-edit";
+import Dashboard from "@/pages/dashboard";
 import Placeholder from "@/pages/placeholder";
 import NotFound from "@/pages/not-found";
 
@@ -20,10 +24,8 @@ const placeholderRoutes = [
   "/kitchen",
   "/book",
   "/consultants",
-  "/dashboard",
   "/owner-exchange",
   "/saved",
-  "/company-card",
   "/notifications",
   "/account",
   "/echo-pricing",
@@ -54,6 +56,10 @@ function AppRouter() {
       <Route path="/" component={Home} />
       <Route path="/sign-in" component={SignIn} />
       <Route path="/sign-up" component={SignUp} />
+      <Route path="/companies" component={Companies} />
+      <Route path="/company/edit" component={CompanyEdit} />
+      <Route path="/company/:id" component={CompanyCard} />
+      <Route path="/dashboard" component={Dashboard} />
       {placeholderRoutes.map((path) => (
         <Route key={path} path={path}>
           <Placeholder path={path} />

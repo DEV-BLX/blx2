@@ -5,6 +5,7 @@ export interface NavItem {
 
 export const visitorNav: NavItem[] = [
   { label: "Home", path: "/" },
+  { label: "Companies", path: "/companies" },
   { label: "Services", path: "/services" },
   { label: "Tools", path: "/tools" },
   { label: "Assessment", path: "/assessment" },
@@ -15,11 +16,12 @@ export const visitorNav: NavItem[] = [
 
 export const companyNav: NavItem[] = [
   { label: "Dashboard", path: "/dashboard" },
+  { label: "Edit Profile", path: "/company/edit" },
+  { label: "Companies", path: "/companies" },
   { label: "Owner Exchange", path: "/owner-exchange" },
   { label: "Saved", path: "/saved" },
   { label: "Kitchen Access", path: "/kitchen" },
   { label: "Book", path: "/book" },
-  { label: "Company Card", path: "/company-card" },
   { label: "Notifications", path: "/notifications" },
   { label: "Account", path: "/account" },
 ];

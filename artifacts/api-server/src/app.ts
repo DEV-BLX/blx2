@@ -3,6 +3,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import pinoHttp from "pino-http";
 import router from "./routes";
+import webhookRouter from "./routes/webhooks";
 import { logger } from "./lib/logger";
 
 const app: Express = express();
@@ -28,6 +29,9 @@ app.use(
 );
 app.use(cors({ origin: true, credentials: true }));
 app.use(cookieParser());
+
+app.use("/api", webhookRouter);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
