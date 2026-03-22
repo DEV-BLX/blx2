@@ -136,6 +136,11 @@ router.post("/auth/login", async (req: AuthRequest, res) => {
       return;
     }
 
+    if (!user.passwordHash) {
+      res.status(401).json({ error: "This account uses Google sign-in. Please use 'Continue with Google'." });
+      return;
+    }
+
     const valid = await verifyPassword(password, user.passwordHash);
     if (!valid) {
       res.status(401).json({ error: "Invalid email or password" });

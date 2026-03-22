@@ -55,14 +55,37 @@ All monetary amounts stored in cents (integer). Soft deletes via `deleted_at` co
 
 ## Auth System
 
-- Custom session-based auth (no external providers)
+- Custom session-based auth with multiple auth methods
 - bcrypt password hashing (12 rounds)
-- HTTP-only cookie (`blx_session`) with 30-day expiry
+- HTTP-only cookie (`blx_session`) with 7-day expiry
 - Server-side session storage in `sessions` table
 - Middleware: `withAuth()` and `withRole()` in `artifacts/api-server/src/lib/auth.ts`
 - Frontend: `useAuth()` hook from `artifacts/blx-web/src/lib/auth.tsx`
 - IP rate limiting: 5 attempts per minute on login/register
 - Roles: company, consumer, consultant, content_admin, support_admin, finance_admin, admin, super_admin
+
+### Auth Methods
+- **Email/password**: Traditional login/register with bcrypt
+- **Google OAuth**: Via `google-auth-library` token verification (requires `GOOGLE_CLIENT_ID` env var)
+- **Magic links**: Token-based email login/verification/password-reset (15-min expiry, logged to console in dev)
+- **SMS verification**: 6-digit code phone verification for authenticated users (10-min expiry, 5 attempts max)
+- **Password reset**: Via magic link with purpose=password_reset, invalidates all sessions on reset
+
+### Auth Tables
+- `users` — email, passwordHash (nullable for Google-only), phone, phoneVerified, emailVerified
+- `sessions` — token-based with 7-day expiry
+- `accounts` — OAuth provider links (provider + providerAccountId, unique constraint)
+- `magic_link_tokens` — email, token, purpose (login/verify_email/password_reset), expiresAt, used
+- `sms_verification_codes` — userId, phone, code, purpose, expiresAt, used, attempts
+
+### Auth API Routes
+- `POST /api/auth/google` — Google sign-in (returns user or `needsRole: true` for new users)
+- `POST /api/auth/google/complete` — Complete Google registration with role selection
+- `POST /api/auth/magic-link/request` — Request magic link (email + purpose)
+- `POST /api/auth/magic-link/verify` — Verify magic link token
+- `POST /api/auth/password-reset` — Reset password using magic link token
+- `POST /api/auth/sms/send` — Send SMS verification code (requires auth)
+- `POST /api/auth/sms/verify` — Verify SMS code (requires auth)
 
 ## API Routes
 

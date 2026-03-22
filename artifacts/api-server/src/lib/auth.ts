@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import crypto from "crypto";
 import { db } from "@workspace/db";
 import { users, sessions } from "@workspace/db/schema";
-import { eq, and, gt } from "drizzle-orm";
+import { eq, and, gt, sql } from "drizzle-orm";
 
 const SALT_ROUNDS = 12;
 const SESSION_DURATION_MS = 7 * 24 * 60 * 60 * 1000;
@@ -56,6 +56,10 @@ export async function deleteSession(token: string, res: Response): Promise<void>
   res.clearCookie(COOKIE_NAME, { path: "/" });
 }
 
+export async function deleteAllUserSessions(userId: string): Promise<void> {
+  await db.delete(sessions).where(eq(sessions.userId, userId));
+}
+
 export async function getUserFromSession(token: string) {
   const result = await db
     .select({
@@ -69,6 +73,8 @@ export async function getUserFromSession(token: string) {
         status: users.status,
         referralCode: users.referralCode,
         emailVerified: users.emailVerified,
+        phone: users.phone,
+        phoneVerified: users.phoneVerified,
         lastLoginAt: users.lastLoginAt,
         createdAt: users.createdAt,
       },
@@ -95,6 +101,8 @@ export interface AuthRequest extends Request {
     status: string;
     referralCode: string | null;
     emailVerified: boolean;
+    phone: string | null;
+    phoneVerified: boolean;
     lastLoginAt: Date | null;
     createdAt: Date;
   };
