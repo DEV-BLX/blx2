@@ -39,8 +39,8 @@ export default function SignIn() {
           <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-gold to-[#d4b55c] shadow-lg shadow-gold/20 mb-4">
             <span className="text-navy font-black text-sm">BLX</span>
           </div>
-          <h1 className="text-2xl font-bold text-charcoal">Welcome Back</h1>
-          <p className="text-coffee-brown/60 text-sm mt-1 font-light">Sign in to your BLX account</p>
+          <h1 className="text-2xl font-bold text-charcoal dark:text-white">Welcome Back</h1>
+          <p className="text-coffee-brown/60 dark:text-white/45 text-sm mt-1 font-light">Sign in to your BLX account</p>
         </div>
 
         <div className="neu-card rounded-3xl p-8">
@@ -51,7 +51,7 @@ export default function SignIn() {
               </div>
             )}
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-sm font-medium text-charcoal/80">Email</Label>
+              <Label htmlFor="email" className="text-sm font-medium text-charcoal/80 dark:text-white/70">Email</Label>
               <Input
                 id="email"
                 type="email"
@@ -59,11 +59,11 @@ export default function SignIn() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="h-11 rounded-xl bg-[#eef0f5] border-0 shadow-inner shadow-black/5 focus:ring-2 focus:ring-navy/20 transition-all"
+                className="h-11 rounded-xl bg-[#eef0f5] dark:bg-[#151515] border-0 shadow-inner shadow-black/5 dark:shadow-black/20 focus:ring-2 focus:ring-navy/20 dark:focus:ring-gold/20 dark:text-white transition-all"
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-sm font-medium text-charcoal/80">Password</Label>
+              <Label htmlFor="password" className="text-sm font-medium text-charcoal/80 dark:text-white/70">Password</Label>
               <Input
                 id="password"
                 type="password"
@@ -71,7 +71,7 @@ export default function SignIn() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="h-11 rounded-xl bg-[#eef0f5] border-0 shadow-inner shadow-black/5 focus:ring-2 focus:ring-navy/20 transition-all"
+                className="h-11 rounded-xl bg-[#eef0f5] dark:bg-[#151515] border-0 shadow-inner shadow-black/5 dark:shadow-black/20 focus:ring-2 focus:ring-navy/20 dark:focus:ring-gold/20 dark:text-white transition-all"
               />
             </div>
             <button
@@ -81,9 +81,9 @@ export default function SignIn() {
             >
               {loading ? "Signing in..." : "Sign In"}
             </button>
-            <p className="text-center text-sm text-coffee-brown/50 pt-2">
+            <p className="text-center text-sm text-coffee-brown/50 dark:text-white/40 pt-2">
               Don't have an account?{" "}
-              <Link href="/sign-up" className="text-navy font-medium hover:underline">
+              <Link href="/sign-up" className="text-navy dark:text-gold font-medium hover:underline">
                 Sign Up
               </Link>
             </p>

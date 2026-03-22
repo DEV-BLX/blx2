@@ -39,8 +39,8 @@ export default function SignUp() {
           <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-gold to-[#d4b55c] shadow-lg shadow-gold/20 mb-4">
             <span className="text-navy font-black text-sm">BLX</span>
           </div>
-          <h1 className="text-2xl font-bold text-charcoal">Create Account</h1>
-          <p className="text-coffee-brown/60 text-sm mt-1 font-light">Join Blue Label Exchange</p>
+          <h1 className="text-2xl font-bold text-charcoal dark:text-white">Create Account</h1>
+          <p className="text-coffee-brown/60 dark:text-white/45 text-sm mt-1 font-light">Join Blue Label Exchange</p>
         </div>
 
         <div className="neu-card rounded-3xl p-8">
@@ -51,7 +51,7 @@ export default function SignUp() {
               </div>
             )}
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-sm font-medium text-charcoal/80">Email</Label>
+              <Label htmlFor="email" className="text-sm font-medium text-charcoal/80 dark:text-white/70">Email</Label>
               <Input
                 id="email"
                 type="email"
@@ -59,11 +59,11 @@ export default function SignUp() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="h-11 rounded-xl bg-[#eef0f5] border-0 shadow-inner shadow-black/5 focus:ring-2 focus:ring-navy/20 transition-all"
+                className="h-11 rounded-xl bg-[#eef0f5] dark:bg-[#151515] border-0 shadow-inner shadow-black/5 dark:shadow-black/20 focus:ring-2 focus:ring-navy/20 dark:focus:ring-gold/20 dark:text-white transition-all"
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-sm font-medium text-charcoal/80">Password</Label>
+              <Label htmlFor="password" className="text-sm font-medium text-charcoal/80 dark:text-white/70">Password</Label>
               <Input
                 id="password"
                 type="password"
@@ -72,16 +72,16 @@ export default function SignUp() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 minLength={8}
-                className="h-11 rounded-xl bg-[#eef0f5] border-0 shadow-inner shadow-black/5 focus:ring-2 focus:ring-navy/20 transition-all"
+                className="h-11 rounded-xl bg-[#eef0f5] dark:bg-[#151515] border-0 shadow-inner shadow-black/5 dark:shadow-black/20 focus:ring-2 focus:ring-navy/20 dark:focus:ring-gold/20 dark:text-white transition-all"
               />
             </div>
             <div className="space-y-2">
-              <Label className="text-sm font-medium text-charcoal/80">Account Type</Label>
+              <Label className="text-sm font-medium text-charcoal/80 dark:text-white/70">Account Type</Label>
               <Select value={role} onValueChange={setRole}>
-                <SelectTrigger className="h-11 rounded-xl bg-[#eef0f5] border-0 shadow-inner shadow-black/5 focus:ring-2 focus:ring-navy/20">
+                <SelectTrigger className="h-11 rounded-xl bg-[#eef0f5] dark:bg-[#151515] border-0 shadow-inner shadow-black/5 dark:shadow-black/20 focus:ring-2 focus:ring-navy/20 dark:focus:ring-gold/20 dark:text-white">
                   <SelectValue placeholder="Select your account type" />
                 </SelectTrigger>
-                <SelectContent className="rounded-xl">
+                <SelectContent className="rounded-xl dark:bg-[#2a2a2a] dark:border-white/10">
                   <SelectItem value="company">Business / Company</SelectItem>
                   <SelectItem value="consumer">Consumer</SelectItem>
                   <SelectItem value="consultant">Consultant</SelectItem>
@@ -89,8 +89,8 @@ export default function SignUp() {
               </Select>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="referral" className="text-sm font-medium text-charcoal/80">
-                Referral Code <span className="text-coffee-brown/40 font-normal">(optional)</span>
+              <Label htmlFor="referral" className="text-sm font-medium text-charcoal/80 dark:text-white/70">
+                Referral Code <span className="text-coffee-brown/40 dark:text-white/30 font-normal">(optional)</span>
               </Label>
               <Input
                 id="referral"
@@ -98,7 +98,7 @@ export default function SignUp() {
                 placeholder="e.g. BLX-J4K7M"
                 value={referralCode}
                 onChange={(e) => setReferralCode(e.target.value)}
-                className="h-11 rounded-xl bg-[#eef0f5] border-0 shadow-inner shadow-black/5 focus:ring-2 focus:ring-navy/20 transition-all"
+                className="h-11 rounded-xl bg-[#eef0f5] dark:bg-[#151515] border-0 shadow-inner shadow-black/5 dark:shadow-black/20 focus:ring-2 focus:ring-navy/20 dark:focus:ring-gold/20 dark:text-white transition-all"
               />
             </div>
             <button
@@ -108,9 +108,9 @@ export default function SignUp() {
             >
               {loading ? "Creating account..." : "Create Account"}
             </button>
-            <p className="text-center text-sm text-coffee-brown/50 pt-2">
+            <p className="text-center text-sm text-coffee-brown/50 dark:text-white/40 pt-2">
               Already have an account?{" "}
-              <Link href="/sign-in" className="text-navy font-medium hover:underline">
+              <Link href="/sign-in" className="text-navy dark:text-gold font-medium hover:underline">
                 Sign In
               </Link>
             </p>

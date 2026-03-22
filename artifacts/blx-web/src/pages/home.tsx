@@ -65,7 +65,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#eef0f5] to-transparent" />
+        <div className="hero-fade-bottom absolute bottom-0 left-0 right-0 h-24" />
       </section>
 
       <section className="relative neu-page-bg py-20 md:py-28 px-5">
@@ -74,7 +74,7 @@ export default function Home() {
             <span className="inline-block text-xs font-semibold text-fox-orange tracking-widest uppercase mb-3">
               Who We Serve
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-charcoal tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-bold text-charcoal dark:text-white tracking-tight">
               Built for Every Side of Business
             </h2>
           </div>
@@ -82,15 +82,15 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="neu-card rounded-3xl p-8 transition-all duration-300 group">
               <div className="neu-icon w-14 h-14 rounded-2xl flex items-center justify-center mb-6 group-hover:shadow-none transition-shadow duration-300">
-                <Building2 className="h-6 w-6 text-navy" />
+                <Building2 className="h-6 w-6 text-navy dark:text-gold" />
               </div>
-              <h3 className="text-lg font-bold text-charcoal mb-3">For Businesses</h3>
-              <p className="text-coffee-brown/80 text-sm leading-relaxed mb-5">
+              <h3 className="text-lg font-bold text-charcoal dark:text-white mb-3">For Businesses</h3>
+              <p className="text-coffee-brown/80 dark:text-white/50 text-sm leading-relaxed mb-5">
                 Claim your company profile, access powerful tools, and grow with
                 expert consulting tailored to your needs.
               </p>
               <Link href="/services">
-                <span className="inline-flex items-center gap-1 text-sm font-medium text-navy/70 hover:text-navy group-hover:gap-2 transition-all cursor-pointer">
+                <span className="inline-flex items-center gap-1 text-sm font-medium text-navy/70 dark:text-gold/70 hover:text-navy dark:hover:text-gold group-hover:gap-2 transition-all cursor-pointer">
                   Learn more <ChevronRight className="h-3.5 w-3.5" />
                 </span>
               </Link>
@@ -100,8 +100,8 @@ export default function Home() {
               <div className="neu-icon w-14 h-14 rounded-2xl flex items-center justify-center mb-6 group-hover:shadow-none transition-shadow duration-300">
                 <Users className="h-6 w-6 text-fox-orange" />
               </div>
-              <h3 className="text-lg font-bold text-charcoal mb-3">For Consumers</h3>
-              <p className="text-coffee-brown/80 text-sm leading-relaxed mb-5">
+              <h3 className="text-lg font-bold text-charcoal dark:text-white mb-3">For Consumers</h3>
+              <p className="text-coffee-brown/80 dark:text-white/50 text-sm leading-relaxed mb-5">
                 Use Echo Pricing to get competitive bids from local businesses
                 on your terms. Save money, your way.
               </p>
@@ -116,8 +116,8 @@ export default function Home() {
               <div className="neu-icon w-14 h-14 rounded-2xl flex items-center justify-center mb-6 group-hover:shadow-none transition-shadow duration-300">
                 <Briefcase className="h-6 w-6 text-dusty-sage" />
               </div>
-              <h3 className="text-lg font-bold text-charcoal mb-3">For Consultants</h3>
-              <p className="text-coffee-brown/80 text-sm leading-relaxed mb-5">
+              <h3 className="text-lg font-bold text-charcoal dark:text-white mb-3">For Consultants</h3>
+              <p className="text-coffee-brown/80 dark:text-white/50 text-sm leading-relaxed mb-5">
                 Connect with businesses, manage bookings, and earn through
                 your expertise with industry-leading payouts.
               </p>
@@ -131,13 +131,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative py-20 md:py-28 px-5 bg-gradient-to-b from-[#eef0f5] to-[#e8eaf0]">
+      <section className="relative py-20 md:py-28 px-5 neu-page-bg">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-16">
             <span className="inline-block text-xs font-semibold text-gold tracking-widest uppercase mb-3">
               Why BLX
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-charcoal tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-bold text-charcoal dark:text-white tracking-tight">
               The Platform Advantage
             </h2>
           </div>
@@ -147,18 +147,18 @@ export default function Home() {
               <div className="neu-icon w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4">
                 <Zap className="h-5 w-5 text-gold" />
               </div>
-              <h4 className="font-semibold text-charcoal mb-2">Echo Pricing</h4>
-              <p className="text-coffee-brown/70 text-sm">
+              <h4 className="font-semibold text-charcoal dark:text-white mb-2">Echo Pricing</h4>
+              <p className="text-coffee-brown/70 dark:text-white/45 text-sm">
                 Consumers set the terms. Businesses compete. Everyone wins.
               </p>
             </div>
 
             <div className="neu-raised rounded-2xl p-6 text-center transition-all duration-300 hover:-translate-y-1">
               <div className="neu-icon w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <Shield className="h-5 w-5 text-navy" />
+                <Shield className="h-5 w-5 text-navy dark:text-gold" />
               </div>
-              <h4 className="font-semibold text-charcoal mb-2">Verified Profiles</h4>
-              <p className="text-coffee-brown/70 text-sm">
+              <h4 className="font-semibold text-charcoal dark:text-white mb-2">Verified Profiles</h4>
+              <p className="text-coffee-brown/70 dark:text-white/45 text-sm">
                 Identity-verified businesses and consultants you can trust.
               </p>
             </div>
@@ -167,8 +167,8 @@ export default function Home() {
               <div className="neu-icon w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4">
                 <TrendingUp className="h-5 w-5 text-fox-orange" />
               </div>
-              <h4 className="font-semibold text-charcoal mb-2">92.5% Payouts</h4>
-              <p className="text-coffee-brown/70 text-sm">
+              <h4 className="font-semibold text-charcoal dark:text-white mb-2">92.5% Payouts</h4>
+              <p className="text-coffee-brown/70 dark:text-white/45 text-sm">
                 Industry-leading consultant payouts. Keep more of what you earn.
               </p>
             </div>
@@ -198,7 +198,7 @@ export default function Home() {
         </section>
       )}
 
-      <footer className="bg-[#1a3a66] text-white/40 py-10 px-5">
+      <footer className="bg-[#1a3a66] dark:bg-[#0f1f35] text-white/40 py-10 px-5">
         <div className="mx-auto max-w-6xl flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-gold to-[#d4b55c]">

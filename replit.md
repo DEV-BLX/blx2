@@ -78,12 +78,38 @@ All monetary amounts stored in cents (integer). Soft deletes via `deleted_at` co
 - Navigation changes based on user role (visitor, company, consumer, consultant, admin)
 - Mobile hamburger menu via shadcn Sheet component
 
+## Design System
+
+Neumorphic / textured / depth design with glassmorphism header. Custom CSS classes in `index.css`:
+- `.neu-card`, `.neu-raised`, `.neu-pressed`, `.neu-surface`, `.neu-icon`, `.neu-btn` — neumorphic shadow/background utilities
+- `.neu-page-bg` — soft page background with radial color washes
+- `.glass-header` — glassmorphic header with backdrop-blur
+- `.depth-gradient` — multi-stop navy gradient for hero sections
+- `.texture-grain` — SVG noise overlay
+- `.shimmer`, `.float-slow`, `.float-medium` — animations
+- All neumorphic classes have `.dark` variants for dark mode
+
+## Dark Mode
+
+- Toggle button (sun/moon icon) in header
+- Persisted in `localStorage` as `blx-theme`
+- Defaults to system preference (`prefers-color-scheme`)
+- Tailwind 4 class strategy via `@custom-variant dark (&:is(.dark *))`
+- ThemeProvider context in `artifacts/blx-web/src/lib/theme.tsx`
+- Dark colors: bg #1a1a1a, cards #2a2a2a, text white/off-white, accents same gold/fox-orange
+
 ## Seed Data
 
 Run: `pnpm --filter @workspace/scripts run seed`
 - Super admin: admin@bluelabelexchange.com / ChangeMeNow123!
 - 22 system settings (fees, limits, percentages)
-- 3 booking types (Discovery $0, Standard $149, Deep Dive $499)
+- 3 booking types (Discovery $0, Standard $35, Deep Dive $60)
+
+Run: `pnpm --filter @workspace/scripts run seed-counties`
+- Seeds ~3,235 US counties into `communities` table from Census Bureau FIPS data
+- Includes all 50 states + DC + territories (PR, GU, VI, AS, MP)
+- Data file: `scripts/data/national_county2020.txt`
+- Each row: name, state, display_name, fips_code, is_county=true, is_custom=false, approximate lat/lon
 
 ## Placeholder Services
 

@@ -44,8 +44,8 @@ export default function Placeholder({ path }: { path: string }) {
         <div className="neu-icon mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl">
           <Construction className="h-9 w-9 text-fox-orange" />
         </div>
-        <h1 className="text-2xl font-bold text-charcoal mb-2">{title}</h1>
-        <p className="text-coffee-brown/60 font-light">Coming Soon</p>
+        <h1 className="text-2xl font-bold text-charcoal dark:text-white mb-2">{title}</h1>
+        <p className="text-coffee-brown/60 dark:text-white/40 font-light">Coming Soon</p>
         <div className="mt-5 h-1 w-16 mx-auto rounded-full bg-gradient-to-r from-gold to-[#d4b55c]" />
       </div>
     </div>

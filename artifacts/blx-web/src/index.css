@@ -362,6 +362,91 @@
     radial-gradient(circle at 50% 80%, rgba(200, 117, 64, 0.03) 0%, transparent 50%);
 }
 
+.dark .neu-surface {
+  background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
+  box-shadow:
+    6px 6px 12px rgba(0, 0, 0, 0.3),
+    -6px -6px 12px rgba(255, 255, 255, 0.04);
+}
+
+.dark .neu-raised {
+  background: linear-gradient(145deg, #2d2d2d, #222222);
+  box-shadow:
+    8px 8px 16px rgba(0, 0, 0, 0.35),
+    -8px -8px 16px rgba(255, 255, 255, 0.03);
+}
+
+.dark .neu-pressed {
+  box-shadow:
+    inset 4px 4px 8px rgba(0, 0, 0, 0.35),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.03);
+}
+
+.dark .neu-card {
+  background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
+  box-shadow:
+    10px 10px 20px rgba(0, 0, 0, 0.35),
+    -10px -10px 20px rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dark .neu-card:hover {
+  box-shadow:
+    12px 12px 24px rgba(0, 0, 0, 0.4),
+    -12px -12px 24px rgba(255, 255, 255, 0.04);
+}
+
+.dark .neu-icon {
+  background: linear-gradient(145deg, #2d2d2d, #232323);
+  box-shadow:
+    4px 4px 8px rgba(0, 0, 0, 0.3),
+    -4px -4px 8px rgba(255, 255, 255, 0.03);
+}
+
+.dark .neu-btn {
+  background: linear-gradient(145deg, #2d2d2d, #222222);
+  box-shadow:
+    4px 4px 8px rgba(0, 0, 0, 0.3),
+    -4px -4px 8px rgba(255, 255, 255, 0.03);
+}
+
+.dark .neu-btn:active {
+  box-shadow:
+    inset 3px 3px 6px rgba(0, 0, 0, 0.35),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.03);
+}
+
+.dark .glass-header {
+  background: rgba(26, 47, 74, 0.95);
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark .depth-gradient {
+  background: linear-gradient(
+    180deg,
+    #0f1f35 0%,
+    #1a2f4a 30%,
+    #1e3860 60%,
+    #142a4a 100%
+  );
+}
+
+.dark .neu-page-bg {
+  background: #1a1a1a;
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(36, 69, 116, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(235, 203, 104, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(200, 117, 64, 0.03) 0%, transparent 50%);
+}
+
+.hero-fade-bottom {
+  background: linear-gradient(to top, #eef0f5, transparent);
+}
+
+.dark .hero-fade-bottom {
+  background: linear-gradient(to top, #1a1a1a, transparent);
+}
+
 @layer utilities {
   input[type="search"]::-webkit-search-cancel-button {
     @apply hidden;
